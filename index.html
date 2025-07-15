@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MovieFind - 영화 검색</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="nav-left">
+                    <h1><a href="index.html" class="logo-link">MovieFind</a></h1>
+                </div>
+                <div class="nav-right">
+                    <a href="#" class="nav-link" data-page="login">로그인</a>
+                    <a href="#" class="nav-link" data-page="signup">회원가입</a>
+                </div>
+            </nav>
+        </header>
+
+        <main id="mainContent">
+            <!-- 메인 페이지 (영화 목록) -->
+            <div id="homePage" class="page active">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Ex) 인센션" class="search-input" />
+                </div>
+
+                <div class="movies-container" id="moviesContainer">
+                    <!-- 영화들이 여기에 동적으로 로드됩니다 -->
+                </div>
+
+                <div class="pagination-container" id="paginationContainer">
+                    <button id="prevPage" class="pagination-btn" disabled>이전</button>
+                    <div class="page-numbers" id="pageNumbers">
+                        <!-- 페이지 번호들이 여기에 동적으로 생성됩니다 -->
+                    </div>
+                    <button id="nextPage" class="pagination-btn">다음</button>
+                </div>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>영화를 불러오는 중...</p>
+                </div>
+            </div>
+
+            <!-- 로그인 페이지 -->
+            <div id="loginPage" class="page">
+                <div class="auth-container">
+                    <div class="auth-card">
+                        <h2>로그인</h2>
+                        <p class="auth-subtitle">MovieFind에 오신 것을 환영합니다</p>
+
+                        <form id="loginForm" class="auth-form">
+                            <div class="form-group">
+                                <label for="loginEmail">이메일</label>
+                                <input
+                                    type="email"
+                                    id="loginEmail"
+                                    name="email"
+                                    required
+                                    placeholder="example@email.com"
+                                />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="loginPassword">비밀번호</label>
+                                <input
+                                    type="password"
+                                    id="loginPassword"
+                                    name="password"
+                                    required
+                                    placeholder="비밀번호를 입력하세요"
+                                />
+                            </div>
+
+                            <div class="form-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="rememberMe" name="rememberMe" />
+                                    <span class="checkmark"></span>
+                                    로그인 상태 유지
+                                </label>
+                                <a href="#" class="forgot-password">비밀번호 찾기</a>
+                            </div>
+
+                            <button type="submit" class="auth-btn">로그인</button>
+                        </form>
+
+                        <div class="auth-divider">
+                            <span>또는</span>
+                        </div>
+
+                        <div class="social-login">
+                            <button class="social-btn google-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24">
+                                    <path
+                                        fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                                    />
+                                    <path
+                                        fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                                    />
+                                    <path
+                                        fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                                    />
+                                    <path
+                                        fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                                    />
+                                </svg>
+                                Google로 로그인
+                            </button>
+
+                            <button class="social-btn kakao-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24">
+                                    <path
+                                        fill="#FEE500"
+                                        d="M12 3C6.48 3 2 6.48 2 12s4.48 9 10 9 10-4.48 10-9S17.52 3 12 3z"
+                                    />
+                                    <path
+                                        fill="#3C1E1E"
+                                        d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"
+                                    />
+                                </svg>
+                                카카오로 로그인
+                            </button>
+                        </div>
+
+                        <div class="auth-footer">
+                            <p>계정이 없으신가요? <a href="#" class="nav-link" data-page="signup">회원가입</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 회원가입 페이지 -->
+            <div id="signupPage" class="page">
+                <div class="auth-container">
+                    <div class="auth-card">
+                        <h2>회원가입</h2>
+                        <p class="auth-subtitle">MovieFind 계정을 만들어보세요</p>
+
+                        <form id="signupForm" class="auth-form">
+                            <div class="form-group">
+                                <label for="username">사용자명</label>
+                                <input
+                                    type="text"
+                                    id="username"
+                                    name="username"
+                                    required
+                                    placeholder="사용자명을 입력하세요"
+                                />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="signupEmail">이메일</label>
+                                <input
+                                    type="email"
+                                    id="signupEmail"
+                                    name="email"
+                                    required
+                                    placeholder="example@email.com"
+                                />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="signupPassword">비밀번호</label>
+                                <input
+                                    type="password"
+                                    id="signupPassword"
+                                    name="password"
+                                    required
+                                    placeholder="8자 이상 입력하세요"
+                                />
+                                <div class="password-strength" id="passwordStrength">
+                                    <div class="strength-bar">
+                                        <div class="strength-fill" id="strengthFill"></div>
+                                    </div>
+                                    <span class="strength-text" id="strengthText">비밀번호 강도</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label for="confirmPassword">비밀번호 확인</label>
+                                    <input
+                                        type="password"
+                                        id="confirmPassword"
+                                        name="confirmPassword"
+                                        required
+                                        placeholder="비밀번호를 다시 입력하세요"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="form-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="agreeTerms" name="agreeTerms" required />
+                                    <span class="checkmark"></span>
+                                    <a href="#" class="terms-link">이용약관</a> 및
+                                    <a href="#" class="terms-link">개인정보처리방침</a>에 동의합니다
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="agreeMarketing" name="agreeMarketing" />
+                                    <span class="checkmark"></span>
+                                    마케팅 정보 수신에 동의합니다 (선택)
+                                </label>
+                            </div>
+
+                            <button type="submit" class="auth-btn">회원가입</button>
+                        </form>
+
+                        <div class="auth-divider">
+                            <span>또는</span>
+                        </div>
+
+                        <div class="social-login">
+                            <button class="social-btn google-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24">
+                                    <path
+                                        fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                                    />
+                                    <path
+                                        fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                                    />
+                                    <path
+                                        fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                                    />
+                                    <path
+                                        fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                                    />
+                                </svg>
+                                Google로 회원가입
+                            </button>
+
+                            <button class="social-btn kakao-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24">
+                                    <path
+                                        fill="#FEE500"
+                                        d="M12 3C6.48 3 2 6.48 2 12s4.48 9 10 9 10-4.48 10-9S17.52 3 12 3z"
+                                    />
+                                    <path
+                                        fill="#3C1E1E"
+                                        d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"
+                                    />
+                                </svg>
+                                카카오로 회원가입
+                            </button>
+                        </div>
+
+                        <div class="auth-footer">
+                            <p>이미 계정이 있으신가요? <a href="#" class="nav-link" data-page="login">로그인</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 MovieFind. All rights reserved.</p>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>

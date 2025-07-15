@@ -1,0 +1,22 @@
+{
+    "name": "moviefind",
+    "version": "1.0.0",
+    "description": "영화 포스터와 제목을 보여주는 웹사이트",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node server.js"
+    },
+    "keywords": [
+        "movie",
+        "api",
+        "javascript",
+        "html",
+        "css"
+    ],
+    "author": "MovieFind Team",
+    "license": "MIT",
+    "engines": {
+        "node": ">=14.0.0"
+    }
+}
