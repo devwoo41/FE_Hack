@@ -1,6 +1,3 @@
-# MovieFind 🎬
-
-영화 포스터와 제목을 보여주는 웹사이트입니다. [The Hot Potato Store API](https://thehotpotato.store/movies/)를 활용하여 영화 데이터를 가져와 표시합니다.
 
 ## 기능
 
@@ -10,32 +7,15 @@
 -   🎨 **모던 UI**: 깔끔하고 현대적인 디자인
 -   ⚡ **빠른 로딩**: 효율적인 데이터 로딩과 캐싱
 
-## 기술 스택
-
--   **HTML5**: 시맨틱 마크업
--   **CSS3**: Flexbox, Grid, 반응형 디자인
--   **JavaScript (ES6+)**: Fetch API, 비동기 처리
--   **API**: The Hot Potato Store Movies API
-
-## 시작하기
-
-1. 프로젝트를 클론하거나 다운로드합니다.
-2. `index.html` 파일을 웹 브라우저에서 엽니다.
-3. 영화 목록이 자동으로 로드됩니다.
 
 ## API 구조
 
 API 응답은 다음과 같은 구조를 가집니다:
 
 ```json
-[
-    {
-        "id": 1,
-        "title_kor": "외계+인 1부",
-        "title_eng": "외계+인 1부",
-        "poster_url": "https://image.tmdb.org/t/p/original/..."
-    }
-]
+
+
+
 ```
 
 ## 주요 기능 설명
@@ -67,21 +47,4 @@ MovieFind/
 └── README.md           # 프로젝트 설명서
 ```
 
-## 브라우저 지원
 
--   Chrome (권장)
--   Firefox
--   Safari
--   Edge
-
-## 라이선스
-
-이 프로젝트는 MIT 라이선스 하에 배포됩니다.
-
-## 기여하기
-
-버그 리포트나 기능 제안은 언제든 환영합니다!
-
----
-
-**참고**: 이 프로젝트는 [The Hot Potato Store](https://thehotpotato.store/movies/) API를 사용합니다.
