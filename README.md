@@ -1,87 +1,53 @@
-# MovieFind 🎬
+# MovieFind
 
-영화 포스터와 제목을 보여주는 웹사이트입니다. [The Hot Potato Store API](https://thehotpotato.store/movies/)를 활용하여 영화 데이터를 가져와 표시합니다.
+영화 검색, 상세보기, 회원가입/로그인/로그아웃, 댓글 작성/조회 기능이 있는 심플한 영화 정보 웹앱입니다.
 
-## 기능
+## 주요 기능
 
--   🎯 **영화 목록 표시**: API에서 가져온 영화들의 포스터와 제목을 그리드 형태로 표시
--   🔍 **실시간 검색**: 한국어/영어 제목으로 실시간 검색 기능
--   📱 **반응형 디자인**: 모바일, 태블릿, 데스크톱 모든 기기에서 최적화된 화면
--   🎨 **모던 UI**: 깔끔하고 현대적인 디자인
--   ⚡ **빠른 로딩**: 효율적인 데이터 로딩과 캐싱
+-   **영화 전체 목록 조회 및 검색**: 영화 제목(한글/영문)으로 실시간 검색
+-   **영화 상세보기**: 포스터, 제목, 출연진, 줄거리, 평점, 개봉일 등 정보 표시
+-   **회원가입/로그인/로그아웃**: JWT 기반 인증, 토큰 로컬스토리지 저장
+-   **댓글 작성/조회**: 영화별 댓글 작성 및 목록 확인 (로그인 필요)
+-   **반응형 UI**: PC/모바일 모두 보기 좋은 레이아웃
 
 ## 기술 스택
 
--   **HTML5**: 시맨틱 마크업
--   **CSS3**: Flexbox, Grid, 반응형 디자인
--   **JavaScript (ES6+)**: Fetch API, 비동기 처리
--   **API**: The Hot Potato Store Movies API
+-   **Frontend**: HTML, CSS, JavaScript (Vanilla)
+-   **API 연동**: RESTful API (fetch)
+-   **인증**: JWT 토큰 (로컬스토리지)
 
-## 시작하기
+## 실행 방법
 
-1. 프로젝트를 클론하거나 다운로드합니다.
-2. `index.html` 파일을 웹 브라우저에서 엽니다.
-3. 영화 목록이 자동으로 로드됩니다.
+1. 이 저장소를 클론합니다.
+2. 프로젝트 폴더에서 아래 명령어로 로컬 서버를 실행합니다.
+    - VSCode Live Server, Python http.server, 또는 기타 정적 서버 사용 가능
+    - 예시: `python -m http.server 3000`
+3. 브라우저에서 `http://localhost:3000` 접속
 
-## API 구조
+## API 연동
 
-API 응답은 다음과 같은 구조를 가집니다:
+-   **Base URL**: `https://hufs-likelion.store`
+-   **주요 엔드포인트**:
+    -   영화 전체조회: `GET /movies`
+    -   영화 상세조회: `GET /movies/<int:pk>`
+    -   댓글 전체조회: `GET /movies/<int:movie_id>`
+    -   댓글 작성: `POST /movies/comments/<int:movie_id>` (Authorization 필요)
+    -   회원가입: `POST /dj/registration`
+    -   로그인: `POST /dj/login`
+    -   로그아웃: `POST /dj/logout`
 
-```json
-[
-    {
-        "id": 1,
-        "title_kor": "외계+인 1부",
-        "title_eng": "외계+인 1부",
-        "poster_url": "https://image.tmdb.org/t/p/original/..."
-    }
-]
-```
+## 환경설정 및 주의사항
 
-## 주요 기능 설명
+-   **API 서버가 반드시 동작 중이어야** 모든 기능이 정상 동작합니다.
+-   댓글 작성 등 인증이 필요한 기능은 로그인 후 사용 가능합니다.
+-   토큰이 만료되면 재로그인 필요
+-   영화/댓글 데이터는 서버 DB에 저장됩니다.
 
-### 영화 카드
+## 커스텀/확장
 
--   각 영화는 포스터 이미지와 한국어 제목이 포함된 카드로 표시됩니다
--   카드를 클릭하면 영화 상세 정보 모달이 열립니다
--   포스터 이미지가 없는 경우 기본 이미지가 표시됩니다
-
-### 검색 기능
-
--   상단 검색창에 영화 제목을 입력하면 실시간으로 결과가 필터링됩니다
--   한국어와 영어 제목 모두 검색 가능합니다
-
-### 반응형 디자인
-
--   데스크톱: 4-5개 카드가 한 줄에 표시
--   태블릿: 3-4개 카드가 한 줄에 표시
--   모바일: 2-3개 카드가 한 줄에 표시
-
-## 파일 구조
-
-```
-MovieFind/
-├── index.html          # 메인 HTML 파일
-├── styles.css          # CSS 스타일시트
-├── script.js           # JavaScript 로직
-└── README.md           # 프로젝트 설명서
-```
-
-## 브라우저 지원
-
--   Chrome (권장)
--   Firefox
--   Safari
--   Edge
-
-## 라이선스
-
-이 프로젝트는 MIT 라이선스 하에 배포됩니다.
-
-## 기여하기
-
-버그 리포트나 기능 제안은 언제든 환영합니다!
+-   CSS, JS를 자유롭게 수정해 UI/UX를 개선할 수 있습니다.
+-   API 명세가 바뀌면 fetch 경로/헤더/body를 맞춰주세요.
 
 ---
 
-**참고**: 이 프로젝트는 [The Hot Potato Store](https://thehotpotato.store/movies/) API를 사용합니다.
+문의/이슈는 언제든 남겨주세요!

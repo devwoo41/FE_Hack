@@ -63,6 +63,6 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, () => {
     console.log(`🚀 MovieFind 서버가 포트 ${PORT}에서 실행 중입니다!`);
     console.log(`📱 브라우저에서 http://localhost:${PORT} 로 접속하세요`);
-    console.log(`🔗 API: https://thehotpotato.store/movies/`);
+    console.log(`🔗 API: https://hufs-likelion.store/movies/`);
     console.log(`\n💡 서버를 중지하려면 Ctrl+C를 누르세요`);
 });
